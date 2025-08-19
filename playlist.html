@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Playlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    header img {
+      width: 200px;
+      border-radius: 10px;
+    }
+    header h1 {
+      font-size: 50px;
+      margin: 0;
+    }
+    .playlist {
+      padding: 20px;
+    }
+    .song {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .song:hover {
+      background: #333;
+    }
+    .song img {
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+    .info {
+      flex: 1;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .artist {
+      font-size: 14px;
+      color: #bbb;
+    }
+    audio {
+      width: 100%;
+      margin-top: 15px;
+    }
+  #background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="az.jpg" alt="cover">
+    <div>
+      <h1>My Playlist</h1>
+      <p>zugoo</p>
+    </div>
+  </header>
+
+  <!-- Player -->
+  <div style="padding:20px;">
+    <h2 id="nowPlaying">🎵 Pilih lagu untuk diputar</h2>
+    <audio id="audioPlayer" controls>
+      <source id="audioSource" src="" type="audio/mpeg">
+    </audio>
+  </div>
+  
+<video id="background-video" autoplay loop muted>
+  <source src="background1.mp4" type="video/mp4">
+</video>
+
+
+
+  <div class="playlist">
+    <div class="song" onclick="playSong('Jakarta Hari Ini - For Revenge, Stereo Wall', 'Jakarta-mc.mp3')">
+      <img src="a.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Jakarta Hari Ini</div>
+        <div class="artist">For Revenge, Stereo Wall</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Tetap Dalam Jiwa - Isyana Sarasvati', 'tetapdalamjiwa.mp3')">
+      <img src="b.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Tetap Dalam Jiwa</div>
+        <div class="artist">Isyana Sarasvati</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Beranjak Dewasa - Nadin Amizah', 'beranjakdewasa.mp3')">
+      <img src="c.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Beranjak Dewasa</div>
+        <div class="artist">Nadin Amizah</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Secukupnya - Hindia', 'secukupnya.mp3')">
+      <img src="d.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Secukupnya</div>
+        <div class="artist">Hindia</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Serana - For Revenge', 'serana.mp3')">
+      <img src="e.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Serana</div>
+        <div class="artist">For Revenge</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Kembali Pulang - Suara Kayu, Feby Putri', 'kembalipulang.mp3')">
+      <img src="f.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Kembali Pulang</div>
+        <div class="artist">Suara Kayu, Feby Putri</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('End of Beginning - Djo', 'endofbegining.mp3')">
+      <img src="g.jpg" alt="cover">
+      <div class="info">
+        <div class="title">End of Beginning</div>
+        <div class="artist">Djo</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Terpikat Senyummu - Idgitaf', 'terpikatsenyummu.mp3')">
+      <img src="h.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Terpikat Senyummu</div>
+        <div class="artist">Idgitaf</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Tak Ingin Usai - Keisya Levronka', 'takinginusai.mp3')">
+      <img src="i.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Tak Ingin Usai</div>
+        <div class="artist">Keisya Levronka</div>
+      </div>
+    </div>
+
+    <div class="song" onclick="playSong('Resah Jadi Luka - Daun Jatuh', 'resahjadiluka.mp3')">
+      <img src="j.jpg" alt="cover">
+      <div class="info">
+        <div class="title">Resah Jadi Luka</div>
+        <div class="artist">Daun Jatuh</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function playSong(title, file) {
+      document.getElementById("nowPlaying").innerText = "🎶 Sedang diputar: " + title;
+      let audioPlayer = document.getElementById("audioPlayer");
+      let audioSource = document.getElementById("audioSource");
+      audioSource.src = file;
+      audioPlayer.load();
+      audioPlayer.play();
+    }
+  let songs = [
+  { title: 'Jakarta Hari Ini - For Revenge, Stereo Wall', file: 'Jakarta-mc.mp3' },
+  { title: 'Tetap Dalam Jiwa - Isyana Sarasvati', file: 'tetapdalamjiwa.mp3' },
+  { title: 'Beranjak Dewasa - Nadin Amizah', file: 'beranjakdewasa.mp3'},
+  { title: 'Secukupnya - Hindia', file: 'secukupnya.mp3'},
+  { title: 'Serena - For Revenge', file: 'serena.mp3'},
+  { title: 'Kembali Pulang - Suara Kayu, Febri Putri', file: 'kembalipulang.mp3'},
+  { title: 'End Of Beginning - Djo', file: 'endofbegining.mp3'},
+  { title: 'Terpikat Senyummu - Idgitaf', file: 'terpikatsenyummu.mp3'},
+  { title: 'Tak Ingin Usai - Keisya Levronka', file: 'takinginusai.mp3'},
+  { title: 'Resah Jadi Luka - Daun Jatuh', file: 'resahjadiluka.mp3'},
+  // tambahkan lagu lainnya
+];
+
+let currentSong = 0;
+
+function playNextSong() {
+  playSong(songs[currentSong].title, songs[currentSong].file);
+  currentSong = (currentSong + 1) % songs.length;
+  document.getElementById("audioPlayer").onended = function() {
+    playNextSong();
+  };
+}
+
+window.onload = function() {
+  playNextSong();
+}
+  </script>
+
+</body>
+</html>
